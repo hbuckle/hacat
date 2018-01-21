@@ -1,0 +1,15 @@
+[Unit]
+Description=hello world
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker kill helloworld
+ExecStartPre=-/usr/bin/docker rm helloworld
+ExecStartPre=/usr/bin/docker build --rm -t fundapps/helloworld:latest -f /opt/Dockerfile /opt
+ExecStart=/usr/bin/docker run --name helloworld -p 8000:8000 fundapps/helloworld:latest
+
+[Install]
+WantedBy=multi-user.target

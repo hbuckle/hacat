@@ -1,5 +1,6 @@
 Example of an autoscaling group with ELB
 
-Each instance is a CoreOS box configured to run a Docker container
+As an alternative to CloudDeploy each instance is a CoreOS box
+configured to build and run a Docker container on boot.
 
 CloudWatch is configured for CPU and ELB monitoring
